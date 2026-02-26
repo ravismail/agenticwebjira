@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  agentic-jira:
+    build: .
+    container_name: agentic-jira-app
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    environment:
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+    restart: unless-stopped
+    # OPTIONS FOR OLLAMA URL:
+    # 1. If Ollama is running on your Windows host: http://host.docker.internal:11434/v1
+    # 2. If Ollama is in this docker-compose (uncomment below): http://ollama:11434/v1
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+# If you want to run Ollama inside this same Docker Compose:
+#  ollama:
+#    image: ollama/ollama
+#    container_name: ollama
+#    ports:
+#      - "11434:11434"
+#    volumes:
+#      - ollama_data:/root/.ollama
+
+# volumes:
+#  ollama_data:

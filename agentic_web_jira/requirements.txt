@@ -1,0 +1,10 @@
+langchain
+langchain-community
+langchain-ollama
+langchain-openai
+jira
+beautifulsoup4
+requests
+googlesearch-python
+streamlit
+python-dotenv
